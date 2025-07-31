@@ -143,7 +143,10 @@ body {
 		min-height: 100vh; /* Full viewport height */
 		flex-direction: column; /* Stack contents vertically */
 		margin: 0; /* Remove default margin */
-		line-height: 1; /* Keep your line-height here as intended */
+		line-height: 1; /* Maintain specified line height */
+		background: #1b1f22; /* Background color */
+		-webkit-text-size-adjust: none; /* Prevent text size adjustment */
+		min-width: 320px; /* Minimum width for the body */
 }
 
 ol,
@@ -167,10 +170,6 @@ q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
-}
-
-body {
-	-webkit-text-size-adjust: none;
 }
 
 mark {
@@ -201,9 +200,6 @@ textarea {
 @media screen and (max-width: 480px) {
 
 	html,
-	body {
-		min-width: 320px;
-	}
 
 }
 
@@ -215,10 +211,6 @@ html {
 *:before,
 *:after {
 	box-sizing: inherit;
-}
-
-body {
-	background: #1b1f22;
 }
 
 body.is-preload *,
