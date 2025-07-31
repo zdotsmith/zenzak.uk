@@ -1,0 +1,82 @@
+Please fix the following issues identified by lighthouse:
+
+
+Render blocking requests Potential savings of 450 ms
+Requests are blocking the page's initial render, which may delay LCP. Deferring or inlining can move these network requests out of the critical path.LCPFCP
+URL
+Transfer size
+Duration
+zenzak.uk First party
+14.1 KiB	1,110 ms
+…cloudflare-static/email-decode.min.js(www.zenzak.uk)
+1.2 KiB
+480 ms
+…css/fontawesome-all.min.css(www.zenzak.uk)
+12.9 KiB
+630 ms
+Google Fonts cdn 
+1.5 KiB	780 ms
+/css?family=…(fonts.googleapis.com)
+1.5 KiB
+780 ms
+
+
+
+Font display Potential savings of 260 ms
+Consider setting font-display to swap or optional to ensure that text is consistently visible. swap can be further optimised to mitigate layout shifts with font metric overrides.FCP
+URL
+Potential savings
+zenzak.uk First party
+260 ms
+…webfonts/fa-regular-400.woff2(www.zenzak.uk)
+260 ms
+
+
+Layout shift culprits
+Layout shifts occur when elements move absent any user interaction. Investigate the causes of layout shifts, such as elements being added, removed or their fonts changing as the page loads.CLS
+Element
+Layout shift score
+Total
+0.179
+ZENZAK ANIMATION ENGINEERING-GRADE 3D ANIMATION GET A PROJECT QUOTE INTRO WOR…
+<header id="header">
+0.147
+ZENZAK ANIMATION ENGINEERING-GRADE 3D ANIMATION GET A PROJECT QUOTE INTRO WOR…
+<header id="header">
+0.007
+ZENZAK ANIMATION ENGINEERING-GRADE 3D ANIMATION GET A PROJECT QUOTE INTRO WOR…
+<header id="header">
+0.006
+ZENZAK ANIMATION ENGINEERING-GRADE 3D ANIMATION GET A PROJECT QUOTE INTRO WOR…
+<header id="header">
+0.006
+ZENZAK ANIMATION ENGINEERING-GRADE 3D ANIMATION GET A PROJECT QUOTE INTRO WOR…
+<header id="header">
+0.005
+
+
+Network dependency tree
+Avoid chaining critical requests by reducing the length of chains, reducing the download size of resources or deferring the download of unnecessary resources to improve page load.LCP
+Maximum critical path latency: 672 ms
+Initial Navigation
+https://www.zenzak.uk - 310 ms, 3.81 KiB
+…css/fontawesome-all.min.css(www.zenzak.uk) - 349 ms, 12.95 KiB
+…webfonts/fa-regular-400.woff2(www.zenzak.uk) - 672 ms, 13.64 KiB
+
+
+Some third-party resources can be lazy loaded with a facade 1 facade alternative available
+Some third-party embeds can be lazy loaded. Consider replacing them with a facade until they are required. Learn how to defer third-parties with a facade.TBT
+Product
+Transfer size
+Main-thread blocking time
+Vimeo video 
+313 KiB	95 ms
+Vimeo Embedded Player (Video)
+313 KiB
+95 ms
+…js/player.module.js(f.vimeocdn.com)
+138 KiB
+95 ms
+
+
+Also please identify why lighthouse is downloading both the bg webm and the mp4 files
