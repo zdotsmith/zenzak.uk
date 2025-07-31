@@ -19,8 +19,9 @@
 		<link rel="preload" href="assets/css/main.css" as="style">
 		<link rel="preload" href="assets/js/main.js" as="script">
 
-		<link rel="stylesheet" href="assets/css/fontawesome-all.min.css" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="preload" href="assets/css/fontawesome-all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+		<noscript><link rel="stylesheet" href="assets/css/fontawesome-all.min.css" /></noscript>
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
 	<body class="is-preload">
@@ -29,7 +30,7 @@
 			<div id="wrapper">
 
 				<!-- Header -->
-					<header id="header">
+					<header id="header" style="min-height: 100vh;">
 						<div class="logo">
 							<span class="icon fa-lightbulb"></span>
 						</div>
@@ -87,11 +88,12 @@
     <div class="video aspect-ratio">
   <iframe
     title="vimeo-player"
-    src="https://player.vimeo.com/video/1099649861?h=00ba6dd0ad&dnt=1"
+    data-src="https://player.vimeo.com/video/1099649861?h=00ba6dd0ad&dnt=1"
     loading="lazy"
     sandbox="allow-scripts allow-same-origin allow-forms"
     allow="fullscreen; picture-in-picture"
-    rel="noopener">
+    rel="noopener"
+    style="background: #000; min-height: 315px;">
   </iframe>
 </div>
     <h3 class="major">A Full-Stack Design Partner</h3>
@@ -174,7 +176,7 @@
 
 		<!-- BG -->
 			<div class="bg-video-container">
-			<video autoplay loop muted playsinline id="background-video" width="1920" height="1080">
+			<video autoplay loop muted playsinline id="background-video" width="1920" height="1080" preload="metadata">
 	<source src="video/bg.webm" type="video/webm">
 	<source src="video/bg.mp4" type="video/mp4">
 	Your browser does not support the video tag.
@@ -188,6 +190,7 @@
 			<script src="assets/js/util.js" defer></script>
 			<script src="assets/js/main.js" defer></script>
 			<script src="assets/js/error-handling.js" defer></script>
+			<script src="assets/js/lazy-load.js" defer></script>
 
 	</body>
 </html>
