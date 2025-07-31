@@ -137,7 +137,13 @@ section {
 }
 
 body {
-	line-height: 1;
+		display: flex; /* Ensure flexbox layout */
+		justify-content: center; /* Center horizontally */
+		align-items: center; /* Center vertically */
+		min-height: 100vh; /* Full viewport height */
+		flex-direction: column; /* Stack contents vertically */
+		margin: 0; /* Remove default margin */
+		line-height: 1; /* Keep your line-height here as intended */
 }
 
 ol,
@@ -1551,17 +1557,17 @@ body.is-preload #header .content .inner {
 /* Main */
 
 #main {
-	flex-grow: 1; /* Allow main to grow and take available space */
-	flex-shrink: 1; /* Ensure it can shrink if needed */
-	display: flex; /* Use flexbox layout */
-	align-items: flex-start; /* Align items to the top */
-	justify-content: center; /* Center items horizontally */
-	flex-direction: column; /* Stack items vertically */
-	position: relative;
-	max-width: 100%;
-	z-index: 3;
-	margin: 0; /* Reset any margin */
-	padding: 0; /* Reset any padding */
+	flex-grow: 1; 
+	flex-shrink: 1; 
+	display: flex; 
+	align-items: center; /* Change this from flex-start to center */
+	justify-content: center; 
+	flex-direction: column; 
+	position: relative; 
+	max-width: 100%; 
+	z-index: 3; 
+	margin: 0; 
+	padding: 0; 
 }
 
 #main article {
