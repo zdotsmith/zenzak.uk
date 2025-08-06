@@ -137,16 +137,7 @@ section {
 }
 
 body {
-		display: flex; /* Ensure flexbox layout */
-		justify-content: center; /* Center horizontally */
-		align-items: center; /* Center vertically */
-		min-height: 100vh; /* Full viewport height */
-		flex-direction: column; /* Stack contents vertically */
-		margin: 0; /* Remove default margin */
-		line-height: 1; /* Maintain specified line height */
-		background: #1b1f22; /* Background color */
-		-webkit-text-size-adjust: none; /* Prevent text size adjustment */
-		min-width: 320px; /* Minimum width for the body */
+	line-height: 1;
 }
 
 ol,
@@ -170,6 +161,10 @@ q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
+}
+
+body {
+	-webkit-text-size-adjust: none;
 }
 
 mark {
@@ -200,6 +195,9 @@ textarea {
 @media screen and (max-width: 480px) {
 
 	html,
+	body {
+		min-width: 320px;
+	}
 
 }
 
@@ -211,6 +209,10 @@ html {
 *:before,
 *:after {
 	box-sizing: inherit;
+}
+
+body {
+	background: #1b1f22;
 }
 
 body.is-preload *,
@@ -1253,23 +1255,50 @@ button {
 }
 
 /* Wrapper */
+
 #wrapper {
-	display: flex; /* Use flexbox layout */
-	flex-direction: column; /* Arrange elements vertically */
-	align-items: center; /* Center items horizontally */
-	justify-content: flex-start; /* Align items from the start */
-	min-height: 100vh; /* Ensure it takes at least full height of viewport */
+	display: -moz-flex;
+	display: -webkit-flex;
+	display: -ms-flex;
+	display: flex;
+	-moz-flex-direction: column;
+	-webkit-flex-direction: column;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	-moz-align-items: center;
+	-webkit-align-items: center;
+	-ms-align-items: center;
+	align-items: center;
+	-moz-justify-content: space-between;
+	-webkit-justify-content: space-between;
+	-ms-justify-content: space-between;
+	justify-content: space-between;
+	position: relative;
+	min-height: 100vh;
 	width: 100%;
-	padding: 0; /* Remove extra padding to reduce space */
-	margin: 0; /* Ensure no external margin */
+	padding: 4rem 2rem;
 	z-index: 3;
 }
 
-/* Media Query */
+#wrapper:before {
+	content: '';
+	display: block;
+}
+
 @media screen and (max-width: 1680px) {
+
 	#wrapper {
-		padding: 3rem 2rem; /* Adjust padding for smaller screens */
+		padding: 3rem 2rem;
 	}
+
+}
+
+@media screen and (max-width: 736px) {
+
+	#wrapper {
+		padding: 2rem 1rem;
+	}
+
 }
 
 @media screen and (max-width: 480px) {
@@ -1549,17 +1578,33 @@ body.is-preload #header .content .inner {
 /* Main */
 
 #main {
-	flex-grow: 1; 
-	flex-shrink: 1; 
-	display: flex; 
-	align-items: center; /* Change this from flex-start to center */
-	justify-content: center; 
-	flex-direction: column; 
-	position: relative; 
-	max-width: 100%; 
-	z-index: 3; 
-	margin: 0; 
-	padding: 0; 
+	-moz-flex-grow: 1;
+	-webkit-flex-grow: 1;
+	-ms-flex-grow: 1;
+	flex-grow: 1;
+	-moz-flex-shrink: 1;
+	-webkit-flex-shrink: 1;
+	-ms-flex-shrink: 1;
+	flex-shrink: 1;
+	display: -moz-flex;
+	display: -webkit-flex;
+	display: -ms-flex;
+	display: flex;
+	-moz-align-items: center;
+	-webkit-align-items: center;
+	-ms-align-items: center;
+	align-items: center;
+	-moz-justify-content: center;
+	-webkit-justify-content: center;
+	-ms-justify-content: center;
+	justify-content: center;
+	-moz-flex-direction: column;
+	-webkit-flex-direction: column;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	position: relative;
+	max-width: 100%;
+	z-index: 3;
 }
 
 #main article {
