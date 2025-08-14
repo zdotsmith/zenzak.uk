@@ -13,7 +13,7 @@
 		get back to you to schedule our discovery call.
 	</p>
 
-	<form name="contact" method="POST" data-netlify="true" action="/success" class="form-wrapper">
+	<form name="contact" method="POST" data-netlify="true" action="api/contact" class="form-wrapper">
 		<input type="hidden" name="form-name" value="contact" />
 
 		<div class="form-row">
@@ -23,12 +23,15 @@
 
 		<textarea name="message" placeholder="MESSAGE" rows="5" required></textarea>
 
+		<div class="cf-turnstile" data-sitekey="0x4AAAAAABrbr6ZS62Jf__BJ" data-theme="dark"></div>
+
 		<div class="form-buttons">
-			<!-- Use the enhanced Button component with variants -->
 			<Button type="reset" variant="outline">Reset</Button>
 			<Button type="submit" variant="fill">Send Message</Button>
 		</div>
 	</form>
+	<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
 
 	<p class="direct-email">Or email me directly at: zenzak@tuta.io</p>
 </div>
