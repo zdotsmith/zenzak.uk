@@ -1,11 +1,20 @@
-<!-- src/routes/services/+page.svelte -->
+<!-- src/routes/faq/+page.svelte -->
 <script>
 	import Faq from '$lib/components/Faq.svelte';
+	import SEO from '$lib/components/SEO/index.svelte';
+
+	const seoProps = {
+		title: 'FAQ | 3D Animation & Product Visualization Questions Answered',
+		metadescription:
+			'Get answers to common questions about 3D animation, product visualization, and design services at Zenzak Animation. Learn about our process, timeline, and pricing.'
+	};
 </script>
+
+<SEO {...seoProps} />
 
 <div class="page-content-wrapper">
 	<h1 class="page-title">Frequently Asked Questions</h1>
-		<Faq />
+	<Faq />
 </div>
 
 <style>
@@ -28,5 +37,4 @@
 		text-align: center;
 		margin-bottom: 2rem;
 	}
-
 </style>
