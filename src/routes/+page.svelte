@@ -1,8 +1,7 @@
 <script>
-	import { onMount } from 'svelte';
 	import Button from '$lib/components/Button.svelte';
-	import { base } from '$app/paths';
 	import Header from '$lib/components/Header.svelte';
+	import AnimatedCube from '$lib/components/AnimatedCube.svelte';
 
 	import SEO from '$lib/components/SEO/index.svelte';
 	const seoProps = {
@@ -14,33 +13,22 @@
 
 <SEO {...seoProps} />
 
-<div
-	class="relative flex min-h-dvh flex-col items-stretch overflow-hidden"
-	style="--poster-url: url({base}/videos/poster.avif)"
->
-	<div class="fixed top-0 left-0 z-[-1] h-full w-full">
-		<video
-			autoplay
-			muted
-			loop
-			playsinline
-			poster="{base}/videos/poster.avif"
-			class="h-full w-full object-cover"
-		>
-			<source src="{base}/videos/bg.webm" type="video/webm" />
-			<source src="{base}/videos/bg.mp4" type="video/mp4" />
-			Your browser does not support the video tag.
-		</video>
+<div class="relative flex min-h-dvh flex-col items-stretch overflow-hidden">
+	<!-- 3D Cube Background -->
+	<div
+		class="fixed top-0 left-0 z-[-1] h-full w-full bg-gradient-to-br from-slate-900 via-slate-800 to-black"
+	>
+		<AnimatedCube size={2.5} rotationSpeed={0.006} materialColor="#3b82f6" opacity={0.8} />
 		<div
-			class="absolute top-0 left-0 h-full w-full bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0.3)_0%,rgba(0,0,0,0.8)_70%)]"
+			class="absolute top-0 left-0 h-full w-full bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0.1)_0%,rgba(0,0,0,0.6)_70%)]"
 		></div>
 	</div>
 
 	<Header></Header>
 	<div class="flex min-h-0 flex-grow flex-col">
-        <div class="m-4 mt-20 flex flex-grow flex-col items-center sm:m-10 sm:mt-32">
+		<div class="m-4 mt-20 flex flex-grow flex-col items-center sm:m-10 sm:mt-32">
 			<main
-                class="flex w-full max-w-6xl flex-grow flex-col items-center justify-center text-center"
+				class="flex w-full max-w-6xl flex-grow flex-col items-center justify-center text-center"
 			>
 				<div
 					class="hero-element relative mx-0 my-1 w-full max-w-[550px] px-0 py-4 before:absolute before:top-0 before:left-1/2 before:h-px before:w-full before:-translate-x-1/2 before:bg-white/20 after:absolute after:bottom-0 after:left-1/2 after:h-px after:w-full after:-translate-x-1/2 after:bg-white/20 md:my-2 md:py-6"
@@ -71,7 +59,7 @@
 				</nav>
 			</main>
 		</div>
-        
+
 		<footer class="mt-auto pb-4">
 			<p class="text-center text-sm tracking-wide text-gray-400">
 				BACKGROUND ANIMATION BY ZENZAK ANIMATION.
@@ -82,7 +70,7 @@
 
 <style>
 	@media (prefers-reduced-motion: reduce) {
-		video {
+		:global(.threlte-container) {
 			display: none;
 		}
 	}
