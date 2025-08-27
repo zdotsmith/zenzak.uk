@@ -15,12 +15,10 @@
 		rotation += delta * 0.5; // Slow down rotation
 	});
   
-  // Set up global DRACO loader configuration for useGltf
+  // Configure DRACO loader for Threlte
   const dracoLoader = new DRACOLoader();
   dracoLoader.setDecoderPath('/draco/');
-  
-  // Configure the GLTF loader to use DRACO
-  GLTFLoader.setDRACOLoader?.(dracoLoader);
+  dracoLoader.preload();
 </script>
 
 <T.PerspectiveCamera
@@ -33,35 +31,75 @@
   <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} />
 </T.PerspectiveCamera>
 
-  <!-- Successfully showing 3D content - earphone model will load once DRACO is properly configured -->
-  <!-- For now, showing a working 3D object to demonstrate the fix -->
-  <T.Mesh
-    rotation.y={rotation}
-    position.y={0}
-    scale={scale.current}
-    onpointerenter={() => scale.target = 1.2}
-    onpointerleave={() => scale.target = 1}
-  >
-    <T.CapsuleGeometry args={[0.5, 1]} />
-    <T.MeshStandardMaterial color="#4fc3f7" metalness={0.7} roughness={0.3} />
-  </T.Mesh>
-
-  <!-- Keep this for future DRACO implementation -->
-  <!--
-  {#await useGltf('/assets/zenzak-earphone.glb', { dracoDecoderPath: '/draco/' }) then gltf}
+  <!-- Load the earphone model with alternative DRACO approach -->
+  {#await useGltf('/assets/zenzak-earphone.glb', { 
+    dracoDecoderPath: '/draco/'
+  }) then gltf}
     <T
       is={gltf.scene}
-      scale={[2, 2, 2]}
+      scale={[0.3, 0.3, 0.3]}
       rotation.y={rotation}
-      position={[0, -1, 0]}
+      position={[0, -0.5, 0]}
+      onpointerenter={() => scale.target = 1.2}
+      onpointerleave={() => scale.target = 1}
     />
   {:catch error}
-    <T.Mesh>
-      <T.BoxGeometry args={[0.5, 0.5, 0.5]} />
-      <T.MeshStandardMaterial color="red" />
-    </T.Mesh>
+    <!-- If DRACO fails, try loading the GLTF text version -->
+    {#await useGltf('/assets/zenzak-earphone.gltf') then gltfText}
+      <T
+        is={gltfText.scene}
+        scale={[0.3, 0.3, 0.3]}
+        rotation.y={rotation}
+        position={[0, -0.5, 0]}
+        onpointerenter={() => scale.target = 1.2}
+        onpointerleave={() => scale.target = 1}
+      />
+    {:catch gltfError}
+      <!-- Enhanced realistic earphone fallback -->
+      <T.Group
+        rotation.y={rotation}
+        position={[0, -0.5, 0]}
+        scale={scale.current}
+        onpointerenter={() => scale.target = 1.2}
+        onpointerleave={() => scale.target = 1}
+      >
+        <!-- Left earphone cup -->
+        <T.Mesh position={[-0.8, 0, 0]}>
+          <T.CylinderGeometry args={[0.35, 0.4, 0.2, 32]} />
+          <T.MeshStandardMaterial color="#1a1a1a" metalness={0.8} roughness={0.2} />
+        </T.Mesh>
+        <!-- Right earphone cup -->
+        <T.Mesh position={[0.8, 0, 0]}>
+          <T.CylinderGeometry args={[0.35, 0.4, 0.2, 32]} />
+          <T.MeshStandardMaterial color="#1a1a1a" metalness={0.8} roughness={0.2} />
+        </T.Mesh>
+        <!-- Headband -->
+        <T.Mesh rotation={[0, 0, Math.PI/2]}>
+          <T.TorusGeometry args={[0.9, 0.06, 8, 32, Math.PI]} />
+          <T.MeshStandardMaterial color="#2a2a2a" metalness={0.6} roughness={0.3} />
+        </T.Mesh>
+        <!-- Left adjustment slider -->
+        <T.Mesh position={[-0.6, 0.4, 0]}>
+          <T.BoxGeometry args={[0.1, 0.3, 0.08]} />
+          <T.MeshStandardMaterial color="#333333" metalness={0.7} roughness={0.4} />
+        </T.Mesh>
+        <!-- Right adjustment slider -->
+        <T.Mesh position={[0.6, 0.4, 0]}>
+          <T.BoxGeometry args={[0.1, 0.3, 0.08]} />
+          <T.MeshStandardMaterial color="#333333" metalness={0.7} roughness={0.4} />
+        </T.Mesh>
+        <!-- Connecting arms -->
+        <T.Mesh position={[-0.6, 0.2, 0]} rotation={[0, 0, Math.PI/8]}>
+          <T.CylinderGeometry args={[0.02, 0.03, 0.4]} />
+          <T.MeshStandardMaterial color="#2a2a2a" metalness={0.6} roughness={0.3} />
+        </T.Mesh>
+        <T.Mesh position={[0.6, 0.2, 0]} rotation={[0, 0, -Math.PI/8]}>
+          <T.CylinderGeometry args={[0.02, 0.03, 0.4]} />
+          <T.MeshStandardMaterial color="#2a2a2a" metalness={0.6} roughness={0.3} />
+        </T.Mesh>
+      </T.Group>
+    {/await}
   {/await}
-  -->
 
 <!-- Optimized lighting setup -->
 <T.AmbientLight intensity={0.6} />
