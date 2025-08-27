@@ -1,7 +1,7 @@
 <script>
 	import SEO from '$lib/components/SEO/index.svelte';
 	import { onMount } from 'svelte';
-	import Scene3D from './Scene3D.svelte'
+	import Scene3D from './App.svelte'
 
 	const seoProps = {
 		title: 'Purposeful 3D Web Experiences',
