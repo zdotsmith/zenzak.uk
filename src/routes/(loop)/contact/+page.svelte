@@ -13,10 +13,10 @@
 
 <div class="page-content-wrapper">
 	<h1 class="page-title">Get in Touch</h1>
-		<Contact />
+	<Contact />
 </div>
 
-<style>	
+<style>
 	.page-content-wrapper {
 		width: 100%;
 		max-width: 1200px;
@@ -36,5 +36,4 @@
 		text-align: center;
 		margin-bottom: 2rem;
 	}
-
 </style>
