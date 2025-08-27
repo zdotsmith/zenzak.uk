@@ -112,7 +112,7 @@
 					<details class="mt-4">
 						<summary class="text-sm text-gray-400 cursor-pointer hover:text-white">View Code</summary>
 						<pre class="mt-2 p-3 bg-black/40 rounded text-xs overflow-x-auto text-gray-300"><code>&lt;Scene&gt;
-  &lt;Camera position={[5, 5, 5]} /&gt;
+  &lt;Camera position=&#123;[5, 5, 5]&#125; /&gt;
   &lt;Lighting /&gt;
   &lt;Controls /&gt;
   &lt;ProductConfigurator color="#4f46e5" /&gt;
@@ -146,9 +146,9 @@
 					<details class="mt-4">
 						<summary class="text-sm text-gray-400 cursor-pointer hover:text-white">View Code</summary>
 						<pre class="mt-2 p-3 bg-black/40 rounded text-xs overflow-x-auto text-gray-300"><code>&lt;Scene&gt;
-  &lt;Camera position={[10, 5, 10]} /&gt;
-  &lt;Lighting ambientIntensity={0.6} /&gt;
-  &lt;Controls enablePan={true} /&gt;
+  &lt;Camera position=&#123;[10, 5, 10]&#125; /&gt;
+  &lt;Lighting ambientIntensity=&#123;0.6&#125; /&gt;
+  &lt;Controls enablePan=&#123;true&#125; /&gt;
   &lt;ArchitecturalWalkthrough /&gt;
 &lt;/Scene&gt;</code></pre>
 					</details>
@@ -179,7 +179,7 @@
 						<summary class="text-sm text-gray-400 cursor-pointer hover:text-white">View Code</summary>
 						<pre class="mt-2 p-3 bg-black/40 rounded text-xs overflow-x-auto text-gray-300"><code>&lt;Scene&gt;
   &lt;Camera /&gt;
-  &lt;Lighting directionalIntensity={1.5} /&gt;
+  &lt;Lighting directionalIntensity=&#123;1.5&#125; /&gt;
   &lt;ShaderPlayground /&gt;
 &lt;/Scene&gt;</code></pre>
 					</details>
@@ -211,8 +211,8 @@
 					<details class="mt-4">
 						<summary class="text-sm text-gray-400 cursor-pointer hover:text-white">View Code</summary>
 						<pre class="mt-2 p-3 bg-black/40 rounded text-xs overflow-x-auto text-gray-300"><code>&lt;Scene&gt;
-  &lt;Camera position={[8, 5, 8]} /&gt;
-  &lt;Lighting castShadows={true} /&gt;
+  &lt;Camera position=&#123;[8, 5, 8]&#125; /&gt;
+  &lt;Lighting castShadows=&#123;true&#125; /&gt;
   &lt;PhysicsDemo /&gt;
 &lt;/Scene&gt;</code></pre>
 					</details>
@@ -300,12 +300,12 @@
 				
 				<div class="bg-gray-900/50 rounded-lg p-6 mb-8">
 					<pre class="text-sm text-gray-300 overflow-x-auto"><code>// Base Scene Component
-import { Canvas } from '@threlte/core';
+import &#123; Canvas &#125; from '@threlte/core';
 
-let { background = '#040b14', fog = true, shadows = true, children } = $props();
+let &#123; background = '#040b14', fog = true, shadows = true, children &#125; = $props();
 
-&lt;Canvas {background}&gt;
-  {@render children?.()}
+&lt;Canvas &#123;background&#125;&gt;
+  &#123;@render children?.()&#125;
 &lt;/Canvas&gt;</code></pre>
 				</div>
 				
