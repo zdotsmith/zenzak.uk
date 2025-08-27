@@ -3,8 +3,6 @@
 	import { interactivity } from '@threlte/extras';
 	import { Spring } from 'svelte/motion';
   import { OrbitControls, useGltf } from '@threlte/extras';
-  import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
-  import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
 	interactivity();
 
@@ -14,11 +12,6 @@
 	useTask((delta) => {
 		rotation += delta * 0.5; // Slow down rotation
 	});
-  
-  // Configure DRACO loader for Threlte
-  const dracoLoader = new DRACOLoader();
-  dracoLoader.setDecoderPath('/draco/');
-  dracoLoader.preload();
 </script>
 
 <T.PerspectiveCamera
@@ -31,10 +24,8 @@
   <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} />
 </T.PerspectiveCamera>
 
-  <!-- Load the earphone model with alternative DRACO approach -->
-  {#await useGltf('/assets/zenzak-earphone.glb', { 
-    dracoDecoderPath: '/draco/'
-  }) then gltf}
+  <!-- Load actual earphone models with working fallback -->
+  {#await useGltf('/assets/zenzak-earphone-no-draco.glb') then gltf}
     <T
       is={gltf.scene}
       scale={[0.3, 0.3, 0.3]}
@@ -44,7 +35,7 @@
       onpointerleave={() => scale.target = 1}
     />
   {:catch error}
-    <!-- If DRACO fails, try loading the GLTF text version -->
+    <!-- If GLB fails, try the GLTF text version -->
     {#await useGltf('/assets/zenzak-earphone.gltf') then gltfText}
       <T
         is={gltfText.scene}
@@ -55,7 +46,7 @@
         onpointerleave={() => scale.target = 1}
       />
     {:catch gltfError}
-      <!-- Enhanced realistic earphone fallback -->
+      <!-- Fallback: Custom earphone geometry -->
       <T.Group
         rotation.y={rotation}
         position={[0, -0.5, 0]}
