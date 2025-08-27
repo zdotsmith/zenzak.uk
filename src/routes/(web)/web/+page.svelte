@@ -72,12 +72,6 @@
 					<div class="text-sm text-gray-300">Draw Calls</div>
 				</div>
 			</div>
-			
-			<div class="bg-yellow-500/10 border border-yellow-500/30 rounded-lg p-4 max-w-md mx-auto">
-				<p class="text-yellow-200 text-sm">
-					🚧 3D components are in development. This showcases the UI structure and design.
-				</p>
-			</div>
 		</div>
 	</section>
 	
