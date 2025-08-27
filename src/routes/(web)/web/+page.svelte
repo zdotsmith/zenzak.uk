@@ -1,7 +1,8 @@
 <script>
 	import SEO from '$lib/components/SEO/index.svelte';
 	import { onMount } from 'svelte';
-	
+	import Scene3D from './Scene3D.svelte'
+
 	const seoProps = {
 		title: 'Purposeful 3D Web Experiences',
 		metadescription: 'Explore interactive 3D web capabilities with Zenzak\'s engineering-grade approach to web-based 3D visualization and user experiences.'
@@ -35,15 +36,13 @@
 
 <SEO {...seoProps} />
 
-<div class="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900">
-	<!-- Interactive Hero Section -->
+<div class="min-h-screen bg-gradient-to-br from-gray-950 via-gray-900 to-slate-900">
+			<!-- Interactive Hero Section -->
 	<section class="relative h-screen flex items-center justify-center overflow-hidden">
-		<div class="absolute inset-0 bg-gradient-to-br from-blue-900/30 to-purple-900/30">
+		<div class="absolute inset-0 bg-gradient-to-br from-blue-900/5 to-purple-900/5">
 			<!-- Animated floating shapes as placeholder for 3D scene -->
-			<div class="absolute top-1/4 left-1/4 w-16 h-16 bg-blue-400/20 rounded-lg transform rotate-45 animate-pulse"></div>
-			<div class="absolute top-1/3 right-1/3 w-12 h-12 bg-purple-400/30 rounded-full animate-bounce delay-300"></div>
-			<div class="absolute bottom-1/3 left-1/3 w-20 h-20 bg-pink-400/20 rounded-full animate-pulse delay-500"></div>
-			<div class="absolute bottom-1/4 right-1/4 w-14 h-14 bg-indigo-400/25 transform rotate-12 animate-bounce delay-700"></div>
+			  <Scene3D />
+
 		</div>
 		
 		<div class="relative z-10 text-center text-white">
