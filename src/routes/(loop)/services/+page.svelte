@@ -1,6 +1,6 @@
 <!-- src/routes/services/+page.svelte -->
 <script>
-	import Services from '$lib/components/Services.svelte';
+	import Services from './Services.svelte';
 	import SEO from '$lib/components/SEO/index.svelte';
 	const seoProps = {
 		title: '3D Animation for Engineering, Marketing & Startups | Zenzak Animation',

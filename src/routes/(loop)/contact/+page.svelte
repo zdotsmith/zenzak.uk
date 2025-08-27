@@ -1,5 +1,5 @@
 <script>
-	import Contact from '$lib/components/Contact.svelte';
+	import Contact from './Contact.svelte';
 
 	import SEO from '$lib/components/SEO/index.svelte';
 	const seoProps = {

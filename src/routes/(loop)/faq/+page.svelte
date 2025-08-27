@@ -1,6 +1,6 @@
 <!-- src/routes/services/+page.svelte -->
 <script>
-	import Faq from '$lib/components/Faq.svelte';
+	import Faq from './Faq.svelte';
 	import SEO from '$lib/components/SEO/index.svelte';
 	const seoProps = {
 		title: 'FAQ | 3D Animation & Product Visualization Questions Answered',

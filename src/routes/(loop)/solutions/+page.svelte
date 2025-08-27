@@ -1,6 +1,6 @@
 <!-- src/routes/services/+page.svelte -->
 <script>
-	import Solutions from '$lib/components/Solutions.svelte';
+	import Solutions from './Solutions.svelte';
 	import SEO from '$lib/components/SEO/index.svelte';
 	const seoProps = {
 		title: 'Zenzak Animation | Launch-Ready 3D Product Renders & Animation',
