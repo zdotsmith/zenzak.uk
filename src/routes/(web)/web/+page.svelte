@@ -1,7 +1,7 @@
 <script>
 	import SEO from '$lib/components/SEO/index.svelte';
 	import { onMount } from 'svelte';
-	import Scene3D from './Scene3D.svelte'
+	import Scene3D from './App.svelte'
 
 	const seoProps = {
 		title: 'Purposeful 3D Web Experiences',
@@ -71,12 +71,6 @@
 					<div class="text-2xl font-bold text-orange-400">{performanceMetrics.drawCalls}</div>
 					<div class="text-sm text-gray-300">Draw Calls</div>
 				</div>
-			</div>
-			
-			<div class="bg-yellow-500/10 border border-yellow-500/30 rounded-lg p-4 max-w-md mx-auto">
-				<p class="text-yellow-200 text-sm">
-					🚧 3D components are in development. This showcases the UI structure and design.
-				</p>
 			</div>
 		</div>
 	</section>
