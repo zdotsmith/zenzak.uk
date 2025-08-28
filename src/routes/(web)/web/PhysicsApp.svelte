@@ -1,6 +1,6 @@
 <script>
   import { Canvas } from '@threlte/core'
-  import Scene from './PhysicsScene.svelte'
+  import Scene from './WorkingPhysicsScene.svelte'
   
   // Mouse tracking
   let mouse = { x: 0, y: 0 }
@@ -33,6 +33,7 @@
   .canvas-container {
     width: 100%;
     height: 100%;
+    min-height: 400px;
     cursor: pointer;
   }
 </style>

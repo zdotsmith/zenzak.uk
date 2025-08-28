@@ -7,6 +7,8 @@
 	import TextApp from './TextApp.svelte';
 	import EarphoneApp from './EarphoneApp.svelte';
 	import PhysicsApp from './PhysicsApp.svelte';
+	import TestPhysicsApp from './TestPhysicsApp.svelte';
+	import FixedPhysicsApp from './FixedPhysicsApp.svelte';
 
 	const seoProps = {
 		title: 'Purposeful 3D Web Experiences',
@@ -281,6 +283,14 @@ let &#123; background = '#040b14', fog = true, shadows = true, children &#125; =
 	</section>
 </div>
 
-<div>
+<div class="physics-app-container">
 	<PhysicsApp></PhysicsApp>
 </div>
+
+<style>
+	.physics-app-container {
+		width: 100%;
+		height: 50vh;
+		min-height: 400px;
+	}
+</style>

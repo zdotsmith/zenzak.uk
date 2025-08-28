@@ -1,7 +1,7 @@
 <script>
   import { T, useTask } from '@threlte/core'
   import { World, RigidBody, Collider } from '@threlte/rapier'
-  import { Environment, RoundedBoxGeometry } from '@threlte/extras'
+  import { Environment } from '@threlte/extras'
   import { Vector3, DoubleSide } from 'three'
   
   export let mouse = { x: 0, y: 0 }
@@ -99,9 +99,9 @@
     >
       <Collider shape="cuboid" args={[0.5, 0.5, 0.5]} />
       
-      <!-- Rounded Cube Mesh -->
+      <!-- Standard Box Mesh (replacing RoundedBoxGeometry) -->
       <T.Mesh castShadow receiveShadow>
-        <RoundedBoxGeometry args={[1, 1, 1]} radius={0.1} smoothness={4} />
+        <T.BoxGeometry args={[1, 1, 1]} />
         <T.MeshStandardMaterial 
           metalness={0.2} 
           roughness={props.roughness}
@@ -125,9 +125,9 @@
   >
     <Collider shape="cuboid" args={[0.5, 0.5, 0.5]} />
     
-    <!-- Glass-like Rounded Cube -->
+    <!-- Glass-like Standard Box -->
     <T.Mesh castShadow receiveShadow>
-      <RoundedBoxGeometry args={[1, 1, 1]} radius={0.1} smoothness={4} />
+      <T.BoxGeometry args={[1, 1, 1]} />
       <T.MeshPhysicalMaterial 
         clearcoat={1} 
         clearcoatRoughness={0}
