@@ -14,14 +14,14 @@
 	import { onMount } from 'svelte';
 
 	// Configuration
-	const PARTICLE_COUNT = 40;
-	const ATTRACTION_FORCE = 2.5;
-	const MOUSE_REPEL_FORCE = 25;
-	const MOUSE_REPEL_RADIUS = 4;
-	const DAMPING = 0.98;
-	const PARTICLE_RADIUS = 0.15;
-	const CONNECTION_DISTANCE = 4;
-	const BOUNCE_RESTITUTION = 0.8;
+	const PARTICLE_COUNT = 50;
+	const ATTRACTION_FORCE = 3.0;
+	const MOUSE_REPEL_FORCE = 35;
+	const MOUSE_REPEL_RADIUS = 3.5;
+	const DAMPING = 0.985;
+	const PARTICLE_RADIUS = 0.12;
+	const CONNECTION_DISTANCE = 4.5;
+	const BOUNCE_RESTITUTION = 0.6;
 
 	// Create shared geometry and materials
 	const sphereGeometry = new SphereGeometry(PARTICLE_RADIUS, 16, 12);

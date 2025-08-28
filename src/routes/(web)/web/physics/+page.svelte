@@ -16,6 +16,6 @@
 	.canvas-container {
 		position: fixed;
 		inset: 0;
-		background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+		background: linear-gradient(135deg, #1a1a2e 0%, #16213e 20%, #0f3460 40%, #533483 100%);
 	}
 </style>
