@@ -1,6 +1,6 @@
 <script>
 	import * as THREE from 'three';
-	import { T, useTask } from '@threlte/core';
+	import { useTask } from '@threlte/core';
 	import { RigidBody, Collider } from '@threlte/rapier';
 	import { useInteractivity } from '@threlte/extras';
 
@@ -10,14 +10,12 @@
 	// Create a reactive reference for the RigidBody
 	let rigidBody = $state();
 	let vec = new THREE.Vector3();
-	let positionArray = $state();
 
 	// Update position on each frame using useTask
 	useTask(() => {
 		if (rigidBody) {
 			vec.lerp(new THREE.Vector3(-$pointer.x * 5, $pointer.y * 5, 0), 1);
 			rigidBody.setNextKinematicTranslation(vec);
-			positionArray = vec.toArray();
 		}
 	});
 </script>

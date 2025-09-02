@@ -9,11 +9,11 @@
 	// Enhanced compute function that handles both mouse and touch events
 	const touchAwareCompute = (event, state) => {
 		if (!dom.current) return;
-		
+
 		const rect = dom.current.getBoundingClientRect();
 		const width = dom.current.clientWidth;
 		const height = dom.current.clientHeight;
-		
+
 		let clientX, clientY;
 
 		// Handle touch events - prioritize touch over mouse/pointer
@@ -35,8 +35,7 @@
 		else if (event.offsetX !== undefined && event.offsetY !== undefined) {
 			clientX = event.offsetX + rect.left;
 			clientY = event.offsetY + rect.top;
-		}
-		else {
+		} else {
 			// Default to center if no coordinates available
 			clientX = rect.left + width / 2;
 			clientY = rect.top + height / 2;
@@ -63,7 +62,7 @@
 		if (!dom.current) return;
 
 		const target = dom.current;
-		
+
 		// Create synthetic pointer events from touch events
 		const createPointerEventFromTouch = (touchEvent, type) => {
 			const touch = touchEvent.touches[0] || touchEvent.changedTouches[0];
@@ -89,7 +88,7 @@
 
 		const handleTouchEvent = (e) => {
 			e.preventDefault(); // Prevent default touch behaviors like scrolling
-			
+
 			// Create and dispatch equivalent pointer event
 			const syntheticPointerEvent = createPointerEventFromTouch(e, e.type);
 			if (syntheticPointerEvent) {

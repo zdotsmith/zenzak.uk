@@ -1,8 +1,7 @@
 <script>
 	import { T, useThrelte } from '@threlte/core';
-	import { Grid, OrbitControls, Environment } from '@threlte/extras';
+	import { Environment } from '@threlte/extras';
 	import * as THREE from 'three';
-	import { AutoColliders } from '@threlte/rapier';
 	import TouchAwareInteractivity from './TouchAwareInteractivity.svelte';
 	import Pointer from './Pointer.svelte';
 	import Sphere from './Sphere.svelte';
@@ -59,7 +58,7 @@
 <T.DirectionalLight position={[0, -15, -0]} intensity={1} color="white" />
 
 <!-- Render multiple spheres -->
-{#each spheres as { scale }, i}
+{#each spheres as { scale }, i (i)}
 	<Sphere {scale} />
 {/each}
 
