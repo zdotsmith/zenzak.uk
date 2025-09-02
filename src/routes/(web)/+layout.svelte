@@ -25,7 +25,7 @@
 		const touch = e.touches[0] || e.changedTouches[0];
 		if (!touch) return;
 
-		// Create synthetic pointer event
+		// Create synthetic pointer event with improved touch handling
 		const pointerType = e.type === 'touchstart' ? 'pointerdown' 
 		                  : e.type === 'touchend' ? 'pointerup' 
 		                  : 'pointermove';
@@ -36,10 +36,24 @@
 			cancelable: true,
 			pointerType: 'touch',
 			clientX: touch.clientX,
-			clientY: touch.clientY
+			clientY: touch.clientY,
+			// Add pressure for better mobile compatibility
+			pressure: e.type === 'touchend' ? 0 : 1
 		});
 
 		canvasContainer.dispatchEvent(syntheticEvent);
+	};
+
+	// Throttle touch move events for better performance on mobile
+	let touchMoveThrottled = false;
+	const handleTouchMove = (e: TouchEvent) => {
+		if (touchMoveThrottled) return;
+		touchMoveThrottled = true;
+		
+		requestAnimationFrame(() => {
+			handleTouchEvent(e);
+			touchMoveThrottled = false;
+		});
 	};
 </script>
 
@@ -48,10 +62,10 @@
 <div 
 	bind:this={canvasContainer}
 	class="pointer-events-auto absolute inset-0 z-10" 
-	style="touch-action: none;"
-	on:touchstart={handleTouchEvent}
-	on:touchmove={handleTouchEvent}
-	on:touchend={handleTouchEvent}
+	style="touch-action: none; -webkit-touch-callout: none; -webkit-user-select: none;"
+	ontouchstart={handleTouchEvent}
+	ontouchmove={handleTouchMove}
+	ontouchend={handleTouchEvent}
 >
 	<Canvas>
 		<CanvasPortalTarget />

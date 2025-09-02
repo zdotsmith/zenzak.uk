@@ -29,4 +29,13 @@
 	<div class="pointer-events-none absolute inset-0 z-20">
 		<Overlay />
 	</div>
+
+	<!-- Mobile Viewport Height Fix -->
+	<style>
+		@supports (height: 100dvh) {
+			.h-screen {
+				height: 100dvh;
+			}
+		}
+	</style>
 </div>
