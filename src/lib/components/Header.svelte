@@ -47,11 +47,24 @@
 	}
 </script>
 
-<header class="fixed top-0 left-0 w-full px-8 py-4 z-[1000] backdrop-blur-md border-b border-gray-400/20 shadow-[0_4px_30px_rgba(0,0,0,0.1)]">
-	<nav class="flex justify-between items-center max-w-6xl mx-auto text-2xl text-white no-underline relative">
-		<a href="{base}/" class="flex items-center font-bold text-2xl text-white no-underline">
-			<img src="/lightbulb.svg" alt="Zenzak Animation Home" class="h-[1.4em] w-auto mr-2" />
-			<span class="font-light tracking-[0.2em]">ZENZAK ANIMATION</span>
+<header
+	class="fixed top-0 left-0 z-[1000] w-full border-b border-gray-400/20 px-4 py-3 shadow-[0_4px_30px_rgba(0,0,0,0.1)] backdrop-blur-md sm:px-6 sm:py-4 md:px-8"
+>
+	<nav
+		class="relative mx-auto flex max-w-6xl items-center justify-between text-xl text-white no-underline sm:text-2xl"
+	>
+		<a
+			href="{base}/"
+			class="flex items-center text-xl font-bold text-white no-underline sm:text-2xl"
+		>
+			<img
+				src="/lightbulb.svg"
+				alt="Zenzak Animation Home"
+				class="mr-2 h-[1.2em] w-auto sm:h-[1.4em]"
+			/>
+			<span class="text-sm font-light tracking-[0.1em] sm:text-base sm:tracking-[0.2em]"
+				>ZENZAK ANIMATION</span
+			>
 		</a>
 
 		<!-- Right side icons group -->
@@ -60,14 +73,14 @@
 				href="https://github.com/zenzak-uk/zenzak.uk"
 				target="_blank"
 				rel="noopener noreferrer"
-				class="text-white p-1 rounded-[10px] transition-colors duration-150 ease-out flex items-center hover:bg-white/[0.06] focus-visible:bg-white/[0.06] focus-visible:outline-none motion-reduce:transition-none"
+				class="flex min-h-[44px] min-w-[44px] items-center justify-center rounded-[10px] p-2 text-white transition-colors duration-150 ease-out hover:bg-white/[0.06] focus-visible:bg-white/[0.06] focus-visible:outline-none motion-reduce:transition-none sm:p-1"
 			>
-				<Github />
+				<Github size={20} class="sm:h-6 sm:w-6" />
 			</a>
 
 			<!-- Hamburger button -->
 			<button
-				class="block bg-transparent border-none cursor-pointer z-[1001] text-white p-1 rounded-[10px] transition-colors duration-150 ease-out hover:bg-white/[0.06] focus-visible:bg-white/[0.06] focus-visible:outline-none motion-reduce:transition-none"
+				class="z-[1001] block flex min-h-[44px] min-w-[44px] cursor-pointer items-center justify-center rounded-[10px] border-none bg-transparent p-2 text-white transition-colors duration-150 ease-out hover:bg-white/[0.06] focus-visible:bg-white/[0.06] focus-visible:outline-none motion-reduce:transition-none sm:p-1"
 				bind:this={buttonEl}
 				on:click={toggleMobileMenu}
 				aria-label={isMobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
@@ -78,11 +91,12 @@
 				{#if !isMobileMenuOpen}
 					<!-- Hamburger icon -->
 					<svg
-						width="30"
-						height="30"
+						width="24"
+						height="24"
 						viewBox="0 0 30 30"
 						fill="none"
 						xmlns="http://www.w3.org/2000/svg"
+						class="sm:h-[30px] sm:w-[30px]"
 					>
 						<path d="M5 8.75H25" stroke="white" stroke-width="2.5" stroke-linecap="round" />
 						<path d="M5 15H25" stroke="white" stroke-width="2.5" stroke-linecap="round" />
@@ -91,11 +105,12 @@
 				{:else}
 					<!-- Close (X) icon -->
 					<svg
-						width="30"
-						height="30"
+						width="24"
+						height="24"
 						viewBox="0 0 30 30"
 						fill="none"
 						xmlns="http://www.w3.org/2000/svg"
+						class="sm:h-[30px] sm:w-[30px]"
 					>
 						<path d="M8 8L22 22" stroke="white" stroke-width="2.5" stroke-linecap="round" />
 						<path d="M22 8L8 22" stroke="white" stroke-width="2.5" stroke-linecap="round" />
@@ -108,7 +123,7 @@
 		{#if isMobileMenuOpen}
 			<div
 				id="mobile-menu-dropdown"
-				class="absolute top-[calc(100%+0.75rem)] right-0 w-[min(92vw,320px)] p-2 rounded-[14px] bg-black/[0.9] backdrop-blur-[8px] border border-white/[0.08] shadow-[0_12px_40px_rgba(0,0,0,0.28)] z-[1002] origin-top-right"
+				class="absolute top-[calc(100%+0.75rem)] right-0 z-[1002] w-[min(92vw,320px)] origin-top-right rounded-[14px] border border-white/[0.08] bg-black/[0.9] p-2 shadow-[0_12px_40px_rgba(0,0,0,0.28)] backdrop-blur-[8px]"
 				tabindex="-1"
 				use:clickOutside
 				on:outclick={closeMenu}
@@ -116,28 +131,47 @@
 				role="menu"
 				transition:scale={{ duration: 150, start: 0.96, opacity: 0.25, easing: cubicOut }}
 			>
-				<a href="{base}/services" on:click={closeMenu} role="menuitem" bind:this={firstLinkEl}
-					class="block w-full text-white no-underline text-xl font-semibold px-8 py-3.5 rounded-[10px] outline-none hover:bg-white/[0.08] focus-visible:bg-white/[0.08]"
+				<a
+					href="{base}/services"
+					on:click={closeMenu}
+					role="menuitem"
+					bind:this={firstLinkEl}
+					class="block flex min-h-[44px] w-full items-center rounded-[10px] px-6 py-4 text-lg font-semibold text-white no-underline outline-none hover:bg-white/[0.08] focus-visible:bg-white/[0.08]"
 					>Services</a
 				>
-				<a href="{base}/solutions" on:click={closeMenu} role="menuitem"
-					class="block w-full text-white no-underline text-xl font-semibold px-8 py-3.5 rounded-[10px] outline-none hover:bg-white/[0.08] focus-visible:bg-white/[0.08]"
+				<a
+					href="{base}/solutions"
+					on:click={closeMenu}
+					role="menuitem"
+					class="block flex min-h-[44px] w-full items-center rounded-[10px] px-6 py-4 text-lg font-semibold text-white no-underline outline-none hover:bg-white/[0.08] focus-visible:bg-white/[0.08]"
 					>3D Solutions</a
 				>
-				<a href="{base}/web" on:click={closeMenu} role="menuitem"
-					class="block w-full text-white no-underline text-xl font-semibold px-8 py-3.5 rounded-[10px] outline-none hover:bg-white/[0.08] focus-visible:bg-white/[0.08]"
+				<a
+					href="{base}/web"
+					on:click={closeMenu}
+					role="menuitem"
+					class="block flex min-h-[44px] w-full items-center rounded-[10px] px-6 py-4 text-lg font-semibold text-white no-underline outline-none hover:bg-white/[0.08] focus-visible:bg-white/[0.08]"
 					>Web</a
 				>
-				<a href="{base}/faq" on:click={closeMenu} role="menuitem"
-					class="block w-full text-white no-underline text-xl font-semibold px-8 py-3.5 rounded-[10px] outline-none hover:bg-white/[0.08] focus-visible:bg-white/[0.08]"
+				<a
+					href="{base}/faq"
+					on:click={closeMenu}
+					role="menuitem"
+					class="block flex min-h-[44px] w-full items-center rounded-[10px] px-6 py-4 text-lg font-semibold text-white no-underline outline-none hover:bg-white/[0.08] focus-visible:bg-white/[0.08]"
 					>FAQs</a
 				>
-				<a href="{base}/blog" on:click={closeMenu} role="menuitem"
-					class="block w-full text-white no-underline text-xl font-semibold px-8 py-3.5 rounded-[10px] outline-none hover:bg-white/[0.08] focus-visible:bg-white/[0.08]"
+				<a
+					href="{base}/blog"
+					on:click={closeMenu}
+					role="menuitem"
+					class="block flex min-h-[44px] w-full items-center rounded-[10px] px-6 py-4 text-lg font-semibold text-white no-underline outline-none hover:bg-white/[0.08] focus-visible:bg-white/[0.08]"
 					>Blog</a
 				>
-				<a href="{base}/contact" on:click={closeMenu} role="menuitem"
-					class="block w-full text-white no-underline text-xl font-semibold px-8 py-3.5 rounded-[10px] outline-none hover:bg-white/[0.08] focus-visible:bg-white/[0.08]"
+				<a
+					href="{base}/contact"
+					on:click={closeMenu}
+					role="menuitem"
+					class="block flex min-h-[44px] w-full items-center rounded-[10px] px-6 py-4 text-lg font-semibold text-white no-underline outline-none hover:bg-white/[0.08] focus-visible:bg-white/[0.08]"
 					>Contact</a
 				>
 			</div>
