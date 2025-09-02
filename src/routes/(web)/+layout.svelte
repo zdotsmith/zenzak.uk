@@ -19,16 +19,15 @@
 
 	const handleTouchEvent = (e: TouchEvent) => {
 		e.preventDefault(); // Prevent scrolling and other default behaviors
-		
+
 		if (!canvasContainer) return;
-		
+
 		const touch = e.touches[0] || e.changedTouches[0];
 		if (!touch) return;
 
 		// Create synthetic pointer event with improved touch handling
-		const pointerType = e.type === 'touchstart' ? 'pointerdown' 
-		                  : e.type === 'touchend' ? 'pointerup' 
-		                  : 'pointermove';
+		const pointerType =
+			e.type === 'touchstart' ? 'pointerdown' : e.type === 'touchend' ? 'pointerup' : 'pointermove';
 
 		const syntheticEvent = new PointerEvent(pointerType, {
 			pointerId: 1,
@@ -49,7 +48,7 @@
 	const handleTouchMove = (e: TouchEvent) => {
 		if (touchMoveThrottled) return;
 		touchMoveThrottled = true;
-		
+
 		requestAnimationFrame(() => {
 			handleTouchEvent(e);
 			touchMoveThrottled = false;
@@ -59,9 +58,9 @@
 
 <Header />
 
-<div 
+<div
 	bind:this={canvasContainer}
-	class="pointer-events-auto absolute inset-0 z-10" 
+	class="pointer-events-auto absolute inset-0 z-10"
 	style="touch-action: none; -webkit-touch-callout: none; -webkit-user-select: none;"
 	ontouchstart={handleTouchEvent}
 	ontouchmove={handleTouchMove}

@@ -4,6 +4,7 @@
 	import * as THREE from 'three';
 	import Pointer from './Pointer.svelte';
 	import Sphere from './Sphere.svelte';
+	import { sphereControlState } from '$lib/stores/sphereControls.js';
 
 	const { renderer } = useThrelte();
 
@@ -56,7 +57,7 @@
 
 <!-- Render multiple spheres -->
 {#each spheres as { scale }, i (i)}
-	<Sphere {scale} />
+	<Sphere {scale} controlState={$sphereControlState} />
 {/each}
 
 <Pointer />
