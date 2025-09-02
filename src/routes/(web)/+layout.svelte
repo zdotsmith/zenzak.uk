@@ -13,11 +13,46 @@
 	beforeNavigate(() => {
 		clearAllSnippets();
 	});
+
+	// Handle touch events by converting them to pointer events
+	let canvasContainer: HTMLDivElement;
+
+	const handleTouchEvent = (e: TouchEvent) => {
+		e.preventDefault(); // Prevent scrolling and other default behaviors
+		
+		if (!canvasContainer) return;
+		
+		const touch = e.touches[0] || e.changedTouches[0];
+		if (!touch) return;
+
+		// Create synthetic pointer event
+		const pointerType = e.type === 'touchstart' ? 'pointerdown' 
+		                  : e.type === 'touchend' ? 'pointerup' 
+		                  : 'pointermove';
+
+		const syntheticEvent = new PointerEvent(pointerType, {
+			pointerId: 1,
+			bubbles: true,
+			cancelable: true,
+			pointerType: 'touch',
+			clientX: touch.clientX,
+			clientY: touch.clientY
+		});
+
+		canvasContainer.dispatchEvent(syntheticEvent);
+	};
 </script>
 
 <Header />
 
-<div class="pointer-events-auto absolute inset-0 z-10" style="touch-action: none;">
+<div 
+	bind:this={canvasContainer}
+	class="pointer-events-auto absolute inset-0 z-10" 
+	style="touch-action: none;"
+	on:touchstart={handleTouchEvent}
+	on:touchmove={handleTouchEvent}
+	on:touchend={handleTouchEvent}
+>
 	<Canvas>
 		<CanvasPortalTarget />
 	</Canvas>

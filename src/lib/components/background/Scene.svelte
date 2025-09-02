@@ -2,7 +2,6 @@
 	import { T, useThrelte } from '@threlte/core';
 	import { Environment } from '@threlte/extras';
 	import * as THREE from 'three';
-	import TouchAwareInteractivity from './TouchAwareInteractivity.svelte';
 	import Pointer from './Pointer.svelte';
 	import Sphere from './Sphere.svelte';
 
@@ -28,8 +27,6 @@
 </script>
 
 // Credit to Stefan Reifenberg https://github.com/stefanreifenberg/frontend-meetup-intro/
-<!-- Touch-aware interactivity setup -->
-<TouchAwareInteractivity />
 
 <!-- Camera setup -->
 <T.PerspectiveCamera
