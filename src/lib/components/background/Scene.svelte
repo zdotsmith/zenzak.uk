@@ -3,6 +3,7 @@
 	import { Grid, OrbitControls, Environment } from '@threlte/extras';
 	import * as THREE from 'three';
 	import { AutoColliders } from '@threlte/rapier';
+	import TouchAwareInteractivity from './TouchAwareInteractivity.svelte';
 	import Pointer from './Pointer.svelte';
 	import Sphere from './Sphere.svelte';
 
@@ -28,6 +29,9 @@
 </script>
 
 // Credit to Stefan Reifenberg https://github.com/stefanreifenberg/frontend-meetup-intro/
+<!-- Touch-aware interactivity setup -->
+<TouchAwareInteractivity />
+
 <!-- Camera setup -->
 <T.PerspectiveCamera
 	makeDefault

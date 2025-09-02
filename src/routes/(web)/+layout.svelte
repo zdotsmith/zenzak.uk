@@ -17,7 +17,7 @@
 
 <Header />
 
-<div class="pointer-events-auto absolute inset-0 z-10">
+<div class="pointer-events-auto absolute inset-0 z-10" style="touch-action: none;">
 	<Canvas>
 		<CanvasPortalTarget />
 	</Canvas>

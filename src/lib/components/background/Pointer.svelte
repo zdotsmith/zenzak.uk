@@ -2,10 +2,7 @@
 	import * as THREE from 'three';
 	import { T, useTask } from '@threlte/core';
 	import { RigidBody, Collider } from '@threlte/rapier';
-	import { interactivity, useInteractivity } from '@threlte/extras';
-
-	// Enable interactivity globally
-	interactivity();
+	import { useInteractivity } from '@threlte/extras';
 
 	// Access pointer data from interactivity hook
 	const { pointer } = useInteractivity();
