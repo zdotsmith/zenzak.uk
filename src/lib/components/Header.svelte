@@ -48,7 +48,7 @@
 </script>
 
 <header
-	class="fixed top-0 left-0 z-[1000] w-full border-b border-gray-400/20 px-8 py-4 shadow-[0_4px_30px_rgba(0,0,0,0.1)] backdrop-blur-md"
+	class="fixed top-0 left-0 z-[1000] w-full border-b border-gray-400/20 bg-black/20 px-8 py-4 shadow-[0_4px_30px_rgba(0,0,0,0.1)] backdrop-blur-md"
 >
 	<nav
 		class="relative mx-auto flex max-w-6xl items-center justify-between text-2xl text-white no-underline"
