@@ -1,7 +1,8 @@
 <script>
 	import SEO from '$lib/components/SEO/index.svelte';
 	import { onMount } from 'svelte';
-	
+	import Scene3D from './Scene3D.svelte'
+
 	const seoProps = {
 		title: 'Purposeful 3D Web Experiences',
 		metadescription: 'Explore interactive 3D web capabilities with Zenzak\'s engineering-grade approach to web-based 3D visualization and user experiences.'
@@ -35,15 +36,13 @@
 
 <SEO {...seoProps} />
 
-<div class="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900">
-	<!-- Interactive Hero Section -->
+<div class="min-h-screen bg-gradient-to-br from-gray-950 via-gray-900 to-slate-900">
+			<!-- Interactive Hero Section -->
 	<section class="relative h-screen flex items-center justify-center overflow-hidden">
-		<div class="absolute inset-0 bg-gradient-to-br from-blue-900/30 to-purple-900/30">
+		<div class="absolute inset-0 bg-gradient-to-br from-blue-900/5 to-purple-900/5">
 			<!-- Animated floating shapes as placeholder for 3D scene -->
-			<div class="absolute top-1/4 left-1/4 w-16 h-16 bg-blue-400/20 rounded-lg transform rotate-45 animate-pulse"></div>
-			<div class="absolute top-1/3 right-1/3 w-12 h-12 bg-purple-400/30 rounded-full animate-bounce delay-300"></div>
-			<div class="absolute bottom-1/3 left-1/3 w-20 h-20 bg-pink-400/20 rounded-full animate-pulse delay-500"></div>
-			<div class="absolute bottom-1/4 right-1/4 w-14 h-14 bg-indigo-400/25 transform rotate-12 animate-bounce delay-700"></div>
+			  <Scene3D />
+
 		</div>
 		
 		<div class="relative z-10 text-center text-white">
@@ -112,7 +111,7 @@
 					<details class="mt-4">
 						<summary class="text-sm text-gray-400 cursor-pointer hover:text-white">View Code</summary>
 						<pre class="mt-2 p-3 bg-black/40 rounded text-xs overflow-x-auto text-gray-300"><code>&lt;Scene&gt;
-  &lt;Camera position={[5, 5, 5]} /&gt;
+  &lt;Camera position=&#123;[5, 5, 5]&#125; /&gt;
   &lt;Lighting /&gt;
   &lt;Controls /&gt;
   &lt;ProductConfigurator color="#4f46e5" /&gt;
@@ -146,9 +145,9 @@
 					<details class="mt-4">
 						<summary class="text-sm text-gray-400 cursor-pointer hover:text-white">View Code</summary>
 						<pre class="mt-2 p-3 bg-black/40 rounded text-xs overflow-x-auto text-gray-300"><code>&lt;Scene&gt;
-  &lt;Camera position={[10, 5, 10]} /&gt;
-  &lt;Lighting ambientIntensity={0.6} /&gt;
-  &lt;Controls enablePan={true} /&gt;
+  &lt;Camera position=&#123;[10, 5, 10]&#125; /&gt;
+  &lt;Lighting ambientIntensity=&#123;0.6&#125; /&gt;
+  &lt;Controls enablePan=&#123;true&#125; /&gt;
   &lt;ArchitecturalWalkthrough /&gt;
 &lt;/Scene&gt;</code></pre>
 					</details>
@@ -179,7 +178,7 @@
 						<summary class="text-sm text-gray-400 cursor-pointer hover:text-white">View Code</summary>
 						<pre class="mt-2 p-3 bg-black/40 rounded text-xs overflow-x-auto text-gray-300"><code>&lt;Scene&gt;
   &lt;Camera /&gt;
-  &lt;Lighting directionalIntensity={1.5} /&gt;
+  &lt;Lighting directionalIntensity=&#123;1.5&#125; /&gt;
   &lt;ShaderPlayground /&gt;
 &lt;/Scene&gt;</code></pre>
 					</details>
@@ -211,8 +210,8 @@
 					<details class="mt-4">
 						<summary class="text-sm text-gray-400 cursor-pointer hover:text-white">View Code</summary>
 						<pre class="mt-2 p-3 bg-black/40 rounded text-xs overflow-x-auto text-gray-300"><code>&lt;Scene&gt;
-  &lt;Camera position={[8, 5, 8]} /&gt;
-  &lt;Lighting castShadows={true} /&gt;
+  &lt;Camera position=&#123;[8, 5, 8]&#125; /&gt;
+  &lt;Lighting castShadows=&#123;true&#125; /&gt;
   &lt;PhysicsDemo /&gt;
 &lt;/Scene&gt;</code></pre>
 					</details>
@@ -300,12 +299,12 @@
 				
 				<div class="bg-gray-900/50 rounded-lg p-6 mb-8">
 					<pre class="text-sm text-gray-300 overflow-x-auto"><code>// Base Scene Component
-import { Canvas } from '@threlte/core';
+import &#123; Canvas &#125; from '@threlte/core';
 
-let { background = '#040b14', fog = true, shadows = true, children } = $props();
+let &#123; background = '#040b14', fog = true, shadows = true, children &#125; = $props();
 
-&lt;Canvas {background}&gt;
-  {@render children?.()}
+&lt;Canvas &#123;background&#125;&gt;
+  &#123;@render children?.()&#125;
 &lt;/Canvas&gt;</code></pre>
 				</div>
 				
